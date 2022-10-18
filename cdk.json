@@ -1,0 +1,66 @@
+{
+  "app": "npx ts-node --prefer-ts-exts bin/hotels_data_acquisition_deployment.ts",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.js",
+      "tsconfig.json",
+      "package*.json",
+      "yarn.lock",
+      "node_modules",
+      "test"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/aws-ecs:arnFormatIncludesClusterName": true,
+    "@aws-cdk/core:validateSnapshotRemovalPolicy": true,
+    "@aws-cdk/aws-codepipeline:crossAccountKeyAliasStackSafeResourceName": true,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-sns-subscriptions:restrictSqsDescryption": true,
+    "@aws-cdk/aws-apigateway:disableCloudWatchRole": true,
+    "@aws-cdk/core:enablePartitionLiterals": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ],
+    "aws_env_details": {
+      "hotels-dev": {
+        "account": "436596668413",
+        "region": "eu-west-1"
+      },
+      "hotels-staging": {
+        "account": "658476518558",
+        "region": "eu-west-1"
+      }
+    },
+    "stack_details": {
+      "hotels-dev": {
+        "environment": "development",
+        "certificate_arn": "arn:aws:acm:eu-west-1:436596668413:certificate/9e37623c-1bce-4b76-9a85-3b19ced2f3e8",
+        "domain": "hotels.dev.aws.otbeach.com",
+        "subdomain": "hotels-data-acquisition"
+      },
+      "hotels-staging": {
+        "environment": "staging",
+        "certificate_arn": "arn:aws:acm:eu-west-1:658476518558:certificate/9529fe79-da21-439c-919b-96795524b454",
+        "domain": "hotels.staging.aws.otbeach.com",
+        "subdomain": "hotels-data-acquisition"
+      }
+    }
+  }
+}
